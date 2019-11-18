@@ -2,10 +2,15 @@ import React from "react";
 import { Field, reduxForm } from "redux-form";
 
 class StreamCreate extends React.Component {
-  renderInput(formProps) {
+  renderInput({ input, label }) {
     /* console.log(formProps); */
     // we take all props and pass them as atributes to input, shorter version
-    return <input {...formProps.input} />;
+    return (
+      <div className="form-group">
+        <label>{label}</label>
+        <input className="form-control" {...input} />
+      </div>
+    );
     // we take just 2 props
     /* return (
       <input
@@ -17,6 +22,7 @@ class StreamCreate extends React.Component {
 
   render() {
     return (
+      // Field component does not know anything about label, so it will pass label as additional prop to renderInput
       <form>
         <Field name="title" component={this.renderInput} label="Enter Title" />
         <Field
