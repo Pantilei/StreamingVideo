@@ -8,8 +8,8 @@ class StreamCreate extends React.Component {
     if (error && touched) {
       return <div className="alert alert-danger mt-3 p-1">{error}</div>;
     }
-    console.log(error);
-    console.log(touched);
+    /* console.log(error);
+    console.log(touched); */
   }
 
   renderInput = ({ input, label, meta }) => {
