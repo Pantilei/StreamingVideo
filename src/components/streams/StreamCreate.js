@@ -1,5 +1,7 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
+import { connect } from "react-redux";
+import { createStream } from "../../actions";
 
 class StreamCreate extends React.Component {
   renderError({ touched, error }) {
@@ -30,9 +32,10 @@ class StreamCreate extends React.Component {
     ); */
   };
 
-  onSubmit(formValues) {
+  onSubmit = formValues => {
     console.log(formValues);
-  }
+    this.props.createStream(formValues);
+  };
 
   render() {
     /* console.log(this.props); */
@@ -64,10 +67,23 @@ const validate = formValues => {
   return errors;
 };
 
-export default reduxForm({
+const formWraped = reduxForm({
   form: "streamCreate",
   //everytime we interact with form validate function will run, and returned object key/value will pass to component wrapped
   // with <Field/> tag with the same name as key in object, in this case it is renderInput component, which will recieve
   //in first input the error value with key title with name meta
   validate: validate
 })(StreamCreate);
+
+export default connect(null, { createStream })(formWraped);
+
+/* export default reduxForm({
+  form: "streamCreate",
+  validate: validate
+})(StreamCreate); */
+
+//you can use connect() function together with reduxForm in this way
+/* export default connect()(reduxForm({
+  form: "streamCreate",
+  validate: validate
+})(StreamCreate)); */
