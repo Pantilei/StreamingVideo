@@ -6,3 +6,19 @@
 .button button {
   display: inline;
 }
+
+.back {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  opacity: 0.8;
+  z-index: 3;
+}
+
+.modal-dialog {
+  margin-top: 200px;
+  opacity: 1;
+}

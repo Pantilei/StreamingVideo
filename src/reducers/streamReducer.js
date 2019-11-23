@@ -10,6 +10,7 @@ import {
 export default (state = {}, action) => {
   switch (action.type) {
     case FETCH_STREAMS:
+      // _.mapKeys returns big object, we want to take all key value pairs and put in this object thuts why ...(triple dot)
       return { ...state, ..._.mapKeys(action.payload, "id") };
     case CREATE_STREAM:
       return { ...state, [action.payload.id]: action.payload };
