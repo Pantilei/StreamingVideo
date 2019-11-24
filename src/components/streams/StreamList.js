@@ -38,7 +38,9 @@ class StreamList extends React.Component {
             width="64"
           />
           <div className="media-body">
-            <h5 className="mt-0">{stream.title}</h5>
+            <Link to={`/streams/${stream.id}`}>
+              <h5 className="mt-0">{stream.title}</h5>
+            </Link>
             <p>{stream.description}</p>
           </div>
           {this.renderAdmin(stream)}
